@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --watch --mode development ./src/index.js --output ../django-template/frontend/static/main.js",
-    "build": "webpack --watch --mode production ./src/index.js --output ../django-template/frontend/static/main.js"
+    "dev": "webpack --watch --mode development ./src/index.js --output ../tryMusicApp/frontend/static/main.js",
+    "build": "webpack --watch --mode production ./src/index.js --output ../tryMusicApp/frontend/static/main.js"
   },
   "keywords": [],
   "author": "",
