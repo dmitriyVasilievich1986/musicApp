@@ -4,7 +4,8 @@ const initState = {
     musicList: [],
     songMeta: {},
     song: new Audio(),
-    canPlay: false
+    canPlay: false,
+    playButton: "Play"
 }
 
 export default function (state = initState, action) {
@@ -12,18 +13,23 @@ export default function (state = initState, action) {
         case TYPE_ACTIONS.CHANGE_STATUS:
             return {
                 ...state,
-                canPlay: action.payload
+                playButton: action.payload.playButton
             }
         case TYPE_ACTIONS.GET_SONG:
             return {
                 ...state
             }
         case TYPE_ACTIONS.SELECT_SONG:
+            if (!state.song.paused)
+                state.song.pause()
+            state.song.src = action.payload.file_path
+            state.song.currentTime = 0
+            state.song.volume = 1
             return {
                 ...state,
                 songMeta: action.payload,
-                song: new Audio(action.payload.file_path),
-                canPlay: false
+                canPlay: false,
+                playButton: "Play"
             }
         case TYPE_ACTIONS.GET_SONGS:
             return {
