@@ -1,0 +1,1 @@
+gunicorn try_music_app.wsgi:application --bind 192.168.1.104:8000
