@@ -10,33 +10,29 @@ class Song extends Component {
         super(props)
         this.onClick = this.onClick.bind(this)
         this.state = {
-            duration: 1,
-            value: 1,
+            duration: 0,
+            value: 0,
             songCount: 0
         }
     }
     componentDidMount() {
         this.props.song.ontimeupdate = e => this.setState({ value: this.props.song.currentTime })
+        this.props.song.oncanplaythrough = e => this.props.changeStatus(this.props.song)
     }
     onClick(e) {
-        if (this.props.song.paused === true) {
+        if (this.props.song.paused === true)
             this.props.song.play()
-            this.props.song.volume = 1
-            this.setState({ duration: this.props.song.duration })
-            this.props.changeStatus(this.props.song)
-        } else {
+        else
             this.props.song.pause()
-            this.props.changeStatus(this.props.song)
-        }
+        this.props.changeStatus(this.props.song)
     }
     render() {
         return (
             <nav className="navbar fixed-bottom navbar-light bg-light">
                 <Slider
-                    max={this.state.duration}
+                    max={this.props.duration}
                     value={this.state.value}
                     onChange={(e, val) => {
-                        e.preventDefault()
                         this.props.song.currentTime = val
                     }} />
                 {this.props.playButton === "Play" ?
@@ -52,6 +48,7 @@ const mapStateToProps = state => ({
     song: state.musicList.song,
     canPlay: state.musicList.canPlay,
     playButton: state.musicList.playButton,
+    duration: state.musicList.duration,
     meta: state.musicList.songMeta
 })
 

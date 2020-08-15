@@ -13,20 +13,18 @@ class SongList extends Component {
             songSelected: false,
             currentSong: 0
         }
-        this.onClick = this.onClick.bind(this)
     }
     componentDidMount() {
         this.props.getSongs()
         this.props.song.onended = e => {
+            this.props.song.pause()
+            this.props.song.currentTime = 0
             const nextSong = +this.state.currentSong + 1 === this.props.songList.length ? 0 : +this.state.currentSong + 1
             this.props.selectSong(this.props.songList[nextSong])
             this.props.song.play()
-            this.props.changeStatus(this.props.song)
         }
     }
-    onClick(e) {
 
-    }
     render() {
         return (
             <div>

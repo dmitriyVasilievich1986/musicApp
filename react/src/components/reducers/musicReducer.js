@@ -4,6 +4,7 @@ const initState = {
     musicList: [],
     songMeta: {},
     song: new Audio(),
+    duration: 0,
     canPlay: false,
     playButton: "Play"
 }
@@ -13,7 +14,8 @@ export default function (state = initState, action) {
         case TYPE_ACTIONS.CHANGE_STATUS:
             return {
                 ...state,
-                playButton: action.payload.playButton
+                playButton: action.payload.playButton,
+                duration: action.payload.duration
             }
         case TYPE_ACTIONS.GET_SONG:
             return {

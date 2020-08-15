@@ -23,8 +23,10 @@ export const getSong = () => dispatch => {
 }
 
 export const changeStatus = (song) => dispatch => {
+    song.volume = 1
     const newStatus = {
-        playButton: song.paused === true ? "Play" : "Pause"
+        playButton: song.paused === true ? "Play" : "Pause",
+        duration: song.duration
     }
     dispatch({
         type: TYPE_ACTIONS.CHANGE_STATUS,
