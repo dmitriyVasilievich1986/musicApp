@@ -28,7 +28,7 @@ class SongList extends Component {
     render() {
         return (
             <div>
-                <h1 className="text-center">Song List:</h1>
+                <h1 className="text-center p-3">Song List:</h1>
                 <ul className="list-group" style={{ "marginBottom": "3cm" }}>
                     {this.props.songList.map((song, index) =>
                         <li className="list-group-item d-flex ml-4 mr-4 justify-content-between align-items-center" key={index}>
@@ -43,7 +43,7 @@ class SongList extends Component {
                                     })
                                     this.props.selectSong(song)
                                 }}>
-                                Play Song</button>
+                                Select</button>
                         </li>
                     )}
                 </ul>

@@ -36,7 +36,7 @@ export default function (state = initState, action) {
         case TYPE_ACTIONS.GET_SONGS:
             return {
                 ...state,
-                musicList: action.payload
+                musicList: [...action.payload]
             }
         default:
             return state
